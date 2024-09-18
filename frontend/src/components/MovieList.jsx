@@ -9,6 +9,11 @@ const MovieList = ({ title, movies, searchTerm }) => {
   const [expandedMovieId, setExpandedMovieId] = useState(null);
 
   useEffect(() => {
+    if (movies.length === 0) {
+      setError("No movies available.");
+    } else {
+      setError(null);
+    }
   }, [movies]);
 
   const handlePlayClick = async (movie) => {
@@ -22,7 +27,7 @@ const MovieList = ({ title, movies, searchTerm }) => {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: 'Bearer YOUR_API_KEY' // Replace with your actual API key
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YWY4MDlhN2U1OWM4MDgxZWIwMTRlYmUwZTg0ZDkwZSIsIm5iZiI6MTcyNjUyODM2NS4xMzQxODYsInN1YiI6IjY2ZThiOTQ2YjI5MTdlYjE4MDBhODljOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.za4vA20GHzRP-yL5DR09O17TGP84glTdl9rQcJWWOl0' // Replace with your actual API key
           }
         });
 
@@ -103,14 +108,14 @@ const MovieList = ({ title, movies, searchTerm }) => {
         <div className="video-popup">
           <div className="video-content">
             <iframe
-              title={selectedMovie.title}
+              title="Movie Trailer"
               width="100%"
               height="100%"
-              src={`https://www.youtube.com/embed/${videoKey}?autoplay=1`}
+              src={`https://www.youtube.com/embed/${videoKey}`}
               frameBorder="0"
               allowFullScreen
             ></iframe>
-            <button className="close-button" style={{ marginTop: "-60px" }} onClick={closeVideoPopup}>X</button>
+            <button className="close-button" onClick={closeVideoPopup}>X</button>
           </div>
         </div>
       )}
