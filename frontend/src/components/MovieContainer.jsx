@@ -44,13 +44,15 @@ const MovieContainer = () => {
   const hasResults = filteredMovies.some(category => category.length > 0);
 
   return (
-    <div className="mt-20">
+    <div className="">
       {hasResults ? (
         <>
+        <div className=''>
           <MovieList title="Now Playing" movies={filteredMovies[0]} searchTerm={searchTerm} />
           <MovieList title="Popular" movies={filteredMovies[1]} searchTerm={searchTerm} />
           <MovieList title="Top Rated" movies={filteredMovies[2]} searchTerm={searchTerm} />
           <MovieList title="Upcoming" movies={filteredMovies[3]} searchTerm={searchTerm} />
+          </div>
         </>
       ) : (
         <p className="text-center text-xl text-white">

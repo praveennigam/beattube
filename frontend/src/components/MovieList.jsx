@@ -63,7 +63,7 @@ const MovieList = ({ title, movies, searchTerm }) => {
 
   return (
     <div className="movie-container">
-      <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+      <h2 className="text-2xl font-bold text-white mb-4 mt-20">{title}</h2>
       <div className="scrollable">
         {movies.length > 0 ? (
           movies.map((movie) => (
