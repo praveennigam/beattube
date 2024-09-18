@@ -87,7 +87,7 @@ export const forgetPassword = async(req, res) => {
         user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
         await user.save();
 
-        const resetLink = `http://yourfrontend.com/reset-password?token=${resetToken}`;
+        const resetLink = `https://beatbypraveen.onrender.com/reset-password?token=${resetToken}`;
         await transporter.sendMail({
             to: email,
             subject: 'Password Reset',
