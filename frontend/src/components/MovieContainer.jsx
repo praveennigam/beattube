@@ -6,11 +6,9 @@ import { useSearch } from '../context/SearchContext';
 const MovieContainer = () => {
   const { searchTerm } = useSearch();
   
-  // Use a state variable to store movie data
-  const [allMovies, setAllMovies] = React.useState(null);
+  const [allMovies, setAllMovies] = React.useState([]); // Initialize as empty array
   const [loading, setLoading] = React.useState(true);
 
-  // Fetch movies from all categories
   const fetchAllMovies = async () => {
     const urls = [
       API_URLS.NOW_PLAYING,
@@ -19,26 +17,32 @@ const MovieContainer = () => {
       API_URLS.UPCOMING,
     ];
 
-    const results = await Promise.all(
-      urls.map(url => fetch(url).then(res => res.json()))
-    );
-
-    setAllMovies(results.map(data => data.results));
-    setLoading(false);
+    try {
+      const results = await Promise.all(
+        urls.map(url => fetch(url).then(res => res.json()))
+      );
+      setAllMovies(results.map(data => data.results));
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      setAllMovies([]); // Set to empty array on error
+    } finally {
+      setLoading(false);
+    }
   };
 
   React.useEffect(() => {
     fetchAllMovies();
   }, []);
+  
   console.log(allMovies);
 
   if (loading) return <p className="text-center text-xl text-white">Loading...</p>;
 
   // Filter movies based on the searchTerm if it exists
   const filteredMovies = allMovies.map(category =>
-    category.filter(movie =>
+    category ? category.filter(movie =>
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    ) : []
   );
 
   const hasResults = filteredMovies.some(category => category.length > 0);
@@ -47,16 +51,16 @@ const MovieContainer = () => {
     <div className="">
       {hasResults ? (
         <>
-        <div className=''>
-          <MovieList title="Now Playing" movies={filteredMovies[0]} searchTerm={searchTerm} />
-          <MovieList title="Popular" movies={filteredMovies[1]} searchTerm={searchTerm} />
-          <MovieList title="Top Rated" movies={filteredMovies[2]} searchTerm={searchTerm} />
-          <MovieList title="Upcoming" movies={filteredMovies[3]} searchTerm={searchTerm} />
+          <div className=''>
+            <MovieList title="Now Playing" movies={filteredMovies[0]} searchTerm={searchTerm} />
+            <MovieList title="Popular" movies={filteredMovies[1]} searchTerm={searchTerm} />
+            <MovieList title="Top Rated" movies={filteredMovies[2]} searchTerm={searchTerm} />
+            <MovieList title="Upcoming" movies={filteredMovies[3]} searchTerm={searchTerm} />
           </div>
         </>
       ) : (
         <p className="text-center text-xl text-white">
-          
+          No results found for "{searchTerm}"
         </p>
       )}
     </div>

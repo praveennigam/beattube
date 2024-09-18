@@ -9,7 +9,6 @@ const MovieList = ({ title, movies, searchTerm }) => {
   const [expandedMovieId, setExpandedMovieId] = useState(null);
 
   useEffect(() => {
-    // This effect can be used for logging or other side effects related to movies.
   }, [movies]);
 
   const handlePlayClick = async (movie) => {
