@@ -145,7 +145,7 @@ const Login = () => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-2 border border-gray-300 rounded text-black"
                         required
                       />
                     </div>
@@ -201,7 +201,7 @@ const Login = () => {
                     onClick={toggleForm}
                   >
                     {isLogin
-                      ? "New to WebBeat? Sign up now."
+                      ? "New to BeatTube ? Sign up now."
                       : "Already have an account? Sign in."}
                   </a>
                   <div className="mt-2">
