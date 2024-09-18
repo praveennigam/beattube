@@ -1,0 +1,133 @@
+.movie-container {
+  position: relative;
+  margin-top: -2px;
+  padding-top: 20px;
+  padding: 10px;
+  background: linear-gradient(270deg, #010614, #475569);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  overflow: hidden;
+}
+
+.scrollable {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0 10px;
+  scroll-behavior: smooth;
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-card {
+  flex-shrink: 0;
+  width: 200px; /* Increased width */
+  background: linear-gradient(to right, #070f1b, #1b1521);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-right: 15px; /* Margin between cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.movie-image {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.movie-info {
+  padding: 10px;
+  color: white;
+}
+
+.movie-title {
+  font-size: 1.1rem; /* Adjust title size */
+  margin-bottom: 5px;
+}
+
+.movie-rating {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.movie-overview {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.show-more, .play-button {
+  background-color: #410e05; /* Button color */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px; /* Space between buttons */
+}
+
+.show-more:hover, .play-button:hover {
+  background-color: #ff4500; /* Darker shade on hover */
+}
+
+.video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.video-content {
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sticky-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+  .movie-card {
+    width: 450px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    width: 320px; /* Further reduced width */
+  }
+}
