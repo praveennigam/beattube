@@ -3,7 +3,7 @@ import React from 'react';
 
 const HelpCenter = () => {
   return (
-    <div className="p-4 h-screen">
+    <div className="p-4 ">
       <h1 className="text-2xl font-bold mt-20 mb-4">Help Center</h1>
       <p className="mb-4">If you need assistance, please check the following resources:</p>
 
@@ -38,7 +38,7 @@ const HelpCenter = () => {
         </li>
       </ul>
 
-      <p className="mt-4">You can also reach out to us via email at <a href="mailto:support@example.com" className="text-blue-500 hover:underline">support@example.com</a>.</p>
+      <p className="mt-4">You can also reach out to us via email at <a href="mailto:Techsiksha1999@gmail.com" className="text-blue-500 hover:underline">Techsiksha1999@gmail.com</a>.</p>
 
       {/* Additional Contact Information */}
       <h2 className="text-xl font-semibold mt-6">Additional Contact Information</h2>
