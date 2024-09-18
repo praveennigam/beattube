@@ -43,11 +43,11 @@ const Header = ({ setShowVideo }) => {
           className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-red-600 via-slate-300 to-green-600 text-transparent bg-clip-text cursor-pointer"
           onClick={() => navigate('/')}
         >
-          WE
+          BEA
           <span className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-green-500 via-purple-900 to-pink-200 text-transparent bg-clip-text">
-            BBE
+         TT
           </span>
-          AT
+          UBE
         </h1>
       </div>
 
