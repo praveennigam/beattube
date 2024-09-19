@@ -3,11 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Login";
 import Browse from "./Browse";
 import Header from "./Header";
-import Account from "./Account"; // Import Account page
-import ManageProfile from "./ManageProfile"; // Import Manage Profile page
-import HelpCenter from "./HelpCenter"; // Import Help Center page
+import Account from "./Account"; 
+import ManageProfile from "./ManageProfile"; 
+import HelpCenter from "./HelpCenter"; 
 import { AuthContext } from "../context/AuthContext";
 import VideoPlayer from "./VideoPlayer";
+import ResetPassword from "./ResetPassword"; // Import the ResetPassword component
 
 const Body = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const Body = () => {
       element: (
         <>
           <Header />
-          {isLoggedIn ? <Browse /> : <Login />}
+          {isLoggedIn ? <VideoPlayer /> : <Login />}
         </>
       ),
     },
@@ -49,16 +50,6 @@ const Body = () => {
         </>
       ),
     },
-
-    {
-      path: "/",
-      element: (
-        <>
-          <Header />
-          {isLoggedIn ? <VideoPlayer /> : <Login />}
-        </>
-      ),
-    },
     {
       path: "/help-center",
       element: (
@@ -68,7 +59,15 @@ const Body = () => {
         </>
       ),
     },
-
+    {
+      path: "/reset-password/:token", 
+      element: (
+        <>
+          <Header />
+          <ResetPassword />
+        </>
+      ),
+    },
   ]);
 
   return (
