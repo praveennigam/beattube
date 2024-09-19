@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify"; // Import toast for notifications
-import "react-toastify/dist/ReactToastify.css"; // Ensure you have this import for default styles
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -14,12 +14,11 @@ const ResetPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("https://beatbackend.onrender.com/api/auth/reset-password", {
-        token,
+      const response = await axios.post(`https://beatbackend.onrender.com/api/auth/reset-password/${token}`, {
         newPassword,
       });
       toast.success(response.data.message);
-      navigate("/login"); // Redirect to login page after successful reset
+      navigate("/login");
     } catch (error) {
       toast.error(error.response?.data?.error || "Failed to reset password");
     } finally {
