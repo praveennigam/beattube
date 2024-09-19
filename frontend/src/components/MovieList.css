@@ -23,7 +23,7 @@
 
 .movie-card {
   flex-shrink: 0;
-  width: 200px; /* Increased width */
+  width: 150px; /* Increased width */
   background: linear-gradient(to right, #070f1b, #1b1521);
   border-radius: 10px;
   overflow: hidden;
