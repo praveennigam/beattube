@@ -14,7 +14,7 @@ const ResetPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`https://beatbackend.onrender.com/api/auth/reset-password/${token}`, {
+      const response = await axios.post(`https://beatbackend.onrender.com/api/auth/reset-password/:${token}`, {
         newPassword,
       });
       toast.success(response.data.message);
