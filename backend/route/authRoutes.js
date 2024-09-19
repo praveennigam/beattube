@@ -8,7 +8,7 @@ const router = Router();
 router.post('/register', register);
 router.post('/login', login);
 router.post('/forget-password', forgetPassword);
-router.post('/reset-password/:token', resetPassword);
+router.post('/reset-password/token', resetPassword);
 router.post('/logout', logout); // Add this route for logout
 
 export default router;

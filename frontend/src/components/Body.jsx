@@ -60,13 +60,14 @@ const Body = () => {
       ),
     },
     {
-      path: "/reset-password/:token", // Corrected route parameter
+      path: "/reset-password/token", 
       element: (
         <>
           <Header />
           <ResetPassword />
         </>
       ),
+      
     },
   ]);
 

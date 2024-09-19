@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AuthContext } from "../context/AuthContext";
 const ResetPassword = () => {
   const { token } = useParams();
   const [newPassword, setNewPassword] = useState("");
@@ -14,7 +14,7 @@ const ResetPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`https://beatbackend.onrender.com/api/auth/reset-password/:${token}`, {
+      const response = await axios.post(`https://beatbackend.onrender.com/api/auth/reset-password/${token}`, {
         newPassword,
       });
       toast.success(response.data.message);
