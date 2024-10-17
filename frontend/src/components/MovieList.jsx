@@ -27,7 +27,7 @@ const MovieList = ({ title, movies, searchTerm }) => {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YWY4MDlhN2U1OWM4MDgxZWIwMTRlYmUwZTg0ZDkwZSIsIm5iZiI6MTcyNjUyODM2NS4xMzQxODYsInN1YiI6IjY2ZThiOTQ2YjI5MTdlYjE4MDBhODljOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.za4vA20GHzRP-yL5DR09O17TGP84glTdl9rQcJWWOl0' // Replace with your actual API key
+            Authorization: 'Bearer YOUR_API_KEY_HERE' // Replace with your actual API key
           }
         });
 
@@ -71,7 +71,7 @@ const MovieList = ({ title, movies, searchTerm }) => {
       <div className="scrollable">
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <div key={movie.id} className="movie-card">
+            <div key={movie.id} className="movie-card" onDoubleClick={() => handleDoubleClick(movie)}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
@@ -102,7 +102,7 @@ const MovieList = ({ title, movies, searchTerm }) => {
         )}
       </div>
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-      
+
       {/* Video Popup */}
       {selectedMovie && videoKey && (
         <div className="video-popup">
@@ -119,7 +119,7 @@ const MovieList = ({ title, movies, searchTerm }) => {
           </div>
         </div>
       )}
-      
+
       {/* Sticky Popup */}
       {showStickyPopup && (
         <div className="sticky-popup">

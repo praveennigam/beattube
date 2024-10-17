@@ -1,12 +1,20 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(270deg, #010614, #f9fafd);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  overflow: scroll;
+  perspective: 1000px; /* Enable 3D effect */
+}
+
 .movie-container {
   position: relative;
   margin-top: -2px;
   padding-top: 20px;
   padding: 10px;
-  background: linear-gradient(270deg, #010614, #475569);
-  background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
-  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 .scrollable {
@@ -15,6 +23,7 @@
   overflow-x: auto;
   padding: 0 10px;
   scroll-behavior: smooth;
+  perspective: 1000px; /* Enable 3D effect for cards */
 }
 
 .scrollable::-webkit-scrollbar {
@@ -23,31 +32,44 @@
 
 .movie-card {
   flex-shrink: 0;
-  width: 150px; /* Increased width */
-  background: linear-gradient(to right, #070f1b, #1b1521);
+  width: 250px; /* Set width to 250px */
+  background: linear-gradient(to bottom, rgba(7, 15, 27, 0.9), rgba(27, 21, 33, 0.9));
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   margin-right: 15px; /* Margin between cards */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column; /* Stack items vertically */
+  transform-style: preserve-3d; /* Enable 3D transformations */
+}
+
+.movie-card:hover {
+  transform: rotateY(5deg) scale(1.05);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
 }
 
 .movie-image {
   width: 100%; /* Full width */
-  height: auto; /* Maintain aspect ratio */
+  height: 150px; /* Fixed height for images */
+  object-fit: cover; /* Cover the area without distortion */
+  transition: transform 0.3s ease;
+}
+
+.movie-image:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
 }
 
 .movie-info {
-  padding: 10px;
+  padding: 10px; /* Padding for content */
   color: white;
 }
 
 .movie-title {
-  font-size: 1.1rem; /* Adjust title size */
+  font-size: 1.1rem; /* Title size */
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .movie-rating {
@@ -56,22 +78,29 @@
 }
 
 .movie-overview {
-  font-size: 0.8rem;
+  font-size: 0.8rem; /* Overview font size */
   margin-bottom: 10px;
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Ellipsis for overflow */
+  display: -webkit-box; /* Flexbox for multi-line text */
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical; /* Vertical orientation */
 }
 
 .show-more, .play-button {
   background-color: #410e05; /* Button color */
   border: none;
   color: white;
-  padding: 5px 10px;
+  padding: 6px 12px; /* Adjust padding */
   border-radius: 5px;
   cursor: pointer;
   margin-right: 5px; /* Space between buttons */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .show-more:hover, .play-button:hover {
   background-color: #ff4500; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight lift effect */
 }
 
 .video-popup {
@@ -119,15 +148,28 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Keyframe Animation for Background Gradient */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Media Queries for Responsiveness */
 @media (min-width: 768px) {
   .movie-card {
-    width: 450px; 
+    width: 250px; /* Maintain 250px for larger screens */
   }
 }
 
 @media (max-width: 480px) {
   .movie-card {
-    width: 320px; /* Further reduced width */
+    width: 250px; /* Maintain 250px for smaller screens */
   }
 }
